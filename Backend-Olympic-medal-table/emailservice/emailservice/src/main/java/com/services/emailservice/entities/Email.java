@@ -16,14 +16,12 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "emails")
 @EqualsAndHashCode(of = "id")
-@ToString
 public class Email {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,4 +40,12 @@ public class Email {
 		this.mailSubject = emailDto.mailSubject();
 		this.mailText = emailDto.mailText();
 	}
+
+	@Override
+	public String toString() {
+		return "Email: [\nid= " + id + "\nmailFrom = " + mailFrom + "\nmailTo = " + mailTo + "\nmailSubject = " + mailSubject
+				+ "\nmailText = " + mailText + "\nsendDateEmail = " + sendDateEmail + "\nstatus = " + status + "\n]";
+	}
+	
+	
 }

@@ -33,7 +33,6 @@ public class EmailService {
 		return emailsDto;
 	}
 	
-	//@Transactional
 	public Email sendEmail(@Valid EmailDto dto) {
 		Email data = new Email(dto);
 		data.setSendDateEmail(LocalDateTime.now());
@@ -45,9 +44,9 @@ public class EmailService {
 		data.setStatus(EmailStatus.SENT);
 		emailSender.send(message);
 		emailRepository.save(data);
-		System.out.println("****************");
+		System.out.println("******************************************************************************");
 		System.out.println(data);
-		System.out.println("****************");
+		System.out.println("******************************************************************************");
 		return data;
 	}
 	
