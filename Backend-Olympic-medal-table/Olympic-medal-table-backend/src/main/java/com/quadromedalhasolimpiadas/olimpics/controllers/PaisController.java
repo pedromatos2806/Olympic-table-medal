@@ -22,7 +22,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 
 @RestController
 @RequestMapping(value = "/pais")
-@CrossOrigin("http://localhost:4000")
 public class PaisController {
 
 	@Autowired
