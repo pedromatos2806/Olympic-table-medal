@@ -2,7 +2,6 @@ package com.quadromedalhasolimpiadas.olimpics.controllers;
 
 import java.util.List;
 
-import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -68,8 +67,8 @@ public class MedalhaController {
 		if (medalhaCommandSaida == null)
 			return ResponseEntity.notFound().build();
 		
-		Message message = new Message(("Criei uma medalha com o id" + medalhaCommandSaida.idMedalha().toString()).getBytes());
-		rabbitTemplate.send("email.notificacao",message );
+		this.rabbitTemplate.convertAndSend("email.notificacao",medalhaCommandSaida);
+		
 		return ResponseEntity.ok(medalhaCommandSaida);
 	}
 
@@ -78,11 +77,11 @@ public class MedalhaController {
 	@PostMapping(value = "/esporte/{idEsporte}/pais/{codigoPais}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<MedalhaCommandSaida>> adicionarMedalhas(@RequestBody MedalhaCommand medalha,
 			@PathVariable Long idEsporte, @PathVariable String codigoPais) throws Exception {
-		var medalhasDto = medalhaService.adicionarMedalhas(medalha, idEsporte, codigoPais);
-		if (medalhasDto == null)
+		var medalhasCommand = medalhaService.adicionarMedalhas(medalha, idEsporte, codigoPais);
+		if (medalhasCommand == null)
 			return ResponseEntity.notFound().build();
 		
-		return ResponseEntity.ok(medalhasDto);
+		return ResponseEntity.ok(medalhasCommand);
 	}
 
 	@Operation(description = "Edita uma medalha na aplicação")

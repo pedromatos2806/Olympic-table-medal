@@ -1,6 +1,9 @@
 package com.quadromedalhasolimpiadas.olimpics.model.command;
 
+import java.util.List;
+
 import com.quadromedalhasolimpiadas.olimpics.model.entities.Medalha;
+import com.quadromedalhasolimpiadas.olimpics.model.entities.Usuario;
 import com.quadromedalhasolimpiadas.olimpics.model.enumeration.TipoMedalha;
 
 
@@ -11,7 +14,8 @@ public record MedalhaCommandSaida ( Long idMedalha,
 							Boolean ehEquipe, 
 							Long idPais, 
 							String nomePais, 
-							String codigoPais){
+							String codigoPais,
+							List<String> emailsCadastradosNoPais){
 
 	
 	public MedalhaCommandSaida(Medalha medalha) {
@@ -23,7 +27,8 @@ public record MedalhaCommandSaida ( Long idMedalha,
 			medalha.getEsporte().getEhEquipe(),
 			medalha.getPais().getId(),
 			medalha.getPais().getNome(),
-			medalha.getPais().getCodigo()
+			medalha.getPais().getCodigo(),
+			medalha.getPais().getUsuarios().stream().map(Usuario::getEmail).toList()
 			);
 	}
 	
