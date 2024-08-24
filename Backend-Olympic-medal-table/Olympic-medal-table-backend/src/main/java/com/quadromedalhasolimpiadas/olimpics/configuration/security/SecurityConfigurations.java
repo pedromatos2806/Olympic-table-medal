@@ -32,6 +32,10 @@ public class SecurityConfigurations {
 	                req.requestMatchers(HttpMethod.POST, "/usuario").permitAll();
 	                req.requestMatchers(HttpMethod.GET, "/pais").permitAll();
 	                req.requestMatchers(HttpMethod.GET, "/pais/**").permitAll();
+	                req.requestMatchers("/swagger-ui.html").permitAll(); // Permite qualquer requisição que contenha /swagger-ui.html
+	                req.requestMatchers("/swagger-ui.html/**").permitAll(); // Permite qualquer requisição que contenha /swagger-ui.html
+	                req.requestMatchers("/swagger-ui/**").permitAll(); // Permite qualquer requisição para /swagger-ui/*
+	                req.requestMatchers("/v3/api-docs/**").permitAll(); // Permite o acesso à documentação gerada pelo Swagger
 	                req.anyRequest().authenticated();
 	            })
 	            .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
