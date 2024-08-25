@@ -6,7 +6,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.quadromedalhasolimpiadas.olimpics.model.command.UsuarioCommand;
 import com.quadromedalhasolimpiadas.olimpics.model.dto.UsuarioDto;
+import com.quadromedalhasolimpiadas.olimpics.model.dto.UsuarioDtoSalvo;
 import com.quadromedalhasolimpiadas.olimpics.services.JWTokenService;
 import com.quadromedalhasolimpiadas.olimpics.services.UsuarioService;
 
@@ -44,14 +44,10 @@ public class UsuarioController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<UsuarioDto> salvar(@RequestBody @Valid UsuarioDto usuarioDto) {
-	    try {
-	        UsuarioDto usuarioDtoSalvo = usuarioService.salvar(usuarioDto);
-	        return ResponseEntity.ok(usuarioDtoSalvo);
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	        return ResponseEntity.notFound().build();
-	    }
+	public ResponseEntity<UsuarioDtoSalvo> salvar(@RequestBody @Valid UsuarioDto usuarioDto) {
+		UsuarioDtoSalvo usuarioDtoSalvo = usuarioService.salvar(usuarioDto);
+		return ResponseEntity.ok(usuarioDtoSalvo);
+
 	}
 	
 	@Operation(description = "Cadastra um usuário em um país")

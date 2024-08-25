@@ -2,13 +2,13 @@ package com.quadromedalhasolimpiadas.olimpics.services;
 
 import java.util.List;
 
-import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.quadromedalhasolimpiadas.olimpics.exceptions.PaisNotExistsException;
 import com.quadromedalhasolimpiadas.olimpics.model.command.PaisCommandSaida;
 import com.quadromedalhasolimpiadas.olimpics.model.command.PaisCommandSaidaComMedalhas;
 import com.quadromedalhasolimpiadas.olimpics.model.entities.Pais;
@@ -46,21 +46,21 @@ public class PaisService {
 		List<Pais> pais = paisRepository.findByNome(nomePais);
 		
 		if(pais.isEmpty())
-			return null;
+			throw new PaisNotExistsException();
 		
 		return pais.stream().map(PaisCommandSaidaComMedalhas::new).toList();
 	}
 	
-	public PaisCommandSaidaComMedalhas findByCodigo(String nomePais) {
-		if(nomePais.contains(" "))
-			nomePais.replace(" ", "");
-		if( nomePais.contains(".") )
-			nomePais.replace(".", "");
+	public PaisCommandSaidaComMedalhas findByCodigo(String codigoPais) {
+		if(codigoPais.contains(" "))
+			codigoPais.replace(" ", "");
+		if( codigoPais.contains(".") )
+			codigoPais.replace(".", "");
 		
-		Pais pais = paisRepository.findByCodigo(nomePais.toUpperCase()).orElse(null);
+		Pais pais = paisRepository.findByCodigo(codigoPais.toUpperCase()).orElse(null);
 		
 		if(pais == null)
-			throw new ObjectNotFoundException(pais, "Não existe pais com esse código!! 		");
+			throw new PaisNotExistsException();
 		
 		
 		return new PaisCommandSaidaComMedalhas(pais);
