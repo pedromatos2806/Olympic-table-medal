@@ -35,6 +35,8 @@ public class SecurityConfigurations {
 	                req.requestMatchers(HttpMethod.OPTIONS, "/usuario").permitAll();
 	                req.requestMatchers(HttpMethod.GET, "/pais").permitAll();
 	                req.requestMatchers(HttpMethod.GET, "/pais/**").permitAll();
+	                req.requestMatchers(HttpMethod.GET, "/esporte/**").permitAll();
+	                req.requestMatchers(HttpMethod.GET, "/esporte").permitAll();
 	                req.requestMatchers("/swagger-ui.html").permitAll(); // Permite qualquer requisição que contenha /swagger-ui.html
 	                req.requestMatchers("/swagger-ui.html/**").permitAll(); // Permite qualquer requisição que contenha /swagger-ui.html
 	                req.requestMatchers("/swagger-ui/**").permitAll(); // Permite qualquer requisição para /swagger-ui/*

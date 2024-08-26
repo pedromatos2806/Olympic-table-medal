@@ -22,7 +22,7 @@ public interface PaisRepository extends JpaRepository<Pais, Long> {
 					, p.medalhasPrata DESC
 					, p.medalhasBronze DESC
 			""")
-	 public List<Pais> findAll();
+	public List<Pais> findAllComMedalha();
 	
 	public List<Pais> findByNome(String nome);
 

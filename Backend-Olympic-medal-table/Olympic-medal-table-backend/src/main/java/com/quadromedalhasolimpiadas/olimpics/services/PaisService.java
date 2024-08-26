@@ -29,8 +29,19 @@ public class PaisService {
 	UsuarioRepository usuarioRepository;
 	
 	public Page<PaisCommandSaida> todosOsPaises(Pageable pageable) {
+	    Page<Pais> pagePaises = paisRepository.findAll(pageable);
 
-		List<Pais> paises = paisRepository.findAll();
+	    List<PaisCommandSaida> paisesCommandSaida = pagePaises
+	        .getContent()
+	        .stream()
+	        .map(PaisCommandSaida::new)
+	        .toList();
+	    
+	    return new PageImpl<>(paisesCommandSaida, pageable, pagePaises.getTotalElements());
+	}
+	public Page<PaisCommandSaida> todosOsPaisesComMedalha(Pageable pageable) {
+
+		List<Pais> paises = paisRepository.findAllComMedalha();
 		List<PaisCommandSaida> paisesCommandSaida = paises.stream().map(PaisCommandSaida::new).toList();
 
 		int start = (int) pageable.getOffset();
@@ -38,7 +49,7 @@ public class PaisService {
 
 		List<PaisCommandSaida> sublist = paisesCommandSaida.subList(start, end);
 
-		return new PageImpl<PaisCommandSaida>(sublist, pageable, paisesCommandSaida.size());
+		return new PageImpl<>(sublist, pageable, paisesCommandSaida.size());
 	}
 	
 	public List<PaisCommandSaidaComMedalhas> findByName(String nomePais) {

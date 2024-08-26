@@ -26,7 +26,6 @@ public class PaisController {
 	@Autowired
 	private PaisService paisService;
 	
-	
 	@Operation(description = "Busca os todos os países")
 	@ApiResponse(description = "retorna um Page de todos os países da aplicação")
 	@GetMapping
@@ -34,6 +33,12 @@ public class PaisController {
 		return paisService.todosOsPaises(pag);
 	}
 	
+	@Operation(description = "Busca os todos os países")
+	@ApiResponse(description = "retorna um Page de todos os países da aplicação")
+	@GetMapping(value="/commedalha")
+	public Page<PaisCommandSaida> todosOsPaisesComMedalha(Pageable pag) {
+		return paisService.todosOsPaisesComMedalha(pag);
+	}
 	
 	@Operation(description = "Busca uma lista de países pelo nome")
 	@ApiResponse(description = "retorna um Response Entity com uma lista de países com esse nome da aplicação")
