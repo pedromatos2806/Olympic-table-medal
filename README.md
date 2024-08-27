@@ -51,8 +51,14 @@ ________________________________________________________________________________
   2- Pegue as Respectivas IPS e Portas dos micro serviços.
 
   3- Acesse o swagger do micro serviço Olympics pela URL:<b> SEU_IP:   SUA_PORTA/</b>`swagger-ui/index.html#/`
+  
+  ![swagger-olympic](https://github.com/user-attachments/assets/309ba59b-560b-46f5-9d64-53f03782a229)
+
 
   4- Acesse o swagger do micro serviço Email pela URL:<b> SEU_IP:   SUA_PORTA/</b>`swagger-ui/index.html#/`
+  
+  ![swagger-email](https://github.com/user-attachments/assets/405e629f-24d9-49e7-8d74-04f31029cb4d)
+
 </div>
 
 
