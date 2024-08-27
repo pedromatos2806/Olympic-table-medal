@@ -11,6 +11,7 @@ import com.quadromedalhasolimpiadas.olimpics.exceptions.NoRoleException;
 import com.quadromedalhasolimpiadas.olimpics.exceptions.PaisNotExistsException;
 import com.quadromedalhasolimpiadas.olimpics.exceptions.UserAlreadyExistsException;
 import com.quadromedalhasolimpiadas.olimpics.exceptions.UserNotExistsException;
+import com.quadromedalhasolimpiadas.olimpics.model.command.UserRoles;
 import com.quadromedalhasolimpiadas.olimpics.model.command.UsuarioCommand;
 import com.quadromedalhasolimpiadas.olimpics.model.dto.UsuarioDto;
 import com.quadromedalhasolimpiadas.olimpics.model.dto.UsuarioDtoSalvo;
@@ -49,6 +50,12 @@ public class UsuarioService {
 		usuario.setSenha(passwordEncoder.encode(senha));
 		usuarioRepository.save(usuario);
 		return new UsuarioDtoSalvo(usuario);
+	}
+	
+	public ResponseEntity<UserRoles> pegarRolesUsuario(Long idUsuario){
+		Usuario usuario = usuarioRepository.findById(idUsuario).orElseThrow( () -> new UserNotExistsException());
+		
+		return ResponseEntity.ok(new UserRoles(usuario)) ;
 	}
 	
 	public Boolean deletar(Long id) {

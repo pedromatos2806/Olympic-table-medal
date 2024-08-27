@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.quadromedalhasolimpiadas.olimpics.model.command.UserRoles;
 import com.quadromedalhasolimpiadas.olimpics.model.command.UsuarioCommand;
 import com.quadromedalhasolimpiadas.olimpics.model.dto.UsuarioDto;
 import com.quadromedalhasolimpiadas.olimpics.model.dto.UsuarioDtoSalvo;
@@ -50,6 +51,37 @@ public class UsuarioController {
 
 	}
 	
+	@Operation(description = "Busca as roles do usuario")
+	@ApiResponse(description = "Retorna um ResponseEntity de UsuarioCommand com uma Lista de Roles do usuario")
+	@PostMapping(value = "/roles")
+	public ResponseEntity<UserRoles> pegarRolesDoUsuario(
+	        @RequestHeader("Authorization") String authorizationHeader) {
+	    
+	    // Extrair o token JWT do header
+	    String token = null;
+	    if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
+	        token = authorizationHeader.substring(7); // Remove "Bearer " do início
+	    }
+	    
+	    if (token == null) {
+	        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+	    }
+	    
+	    // Obter o ID do usuário a partir do token JWT
+	    var userId = tokenService.getClaim(token, "id").longValue();
+	    
+	    // Certifique-se de que o ID é numérico antes de convertê-lo para Long
+	    Long idUsuario;
+	    try {
+	        idUsuario = userId;
+	    } catch (NumberFormatException e) {
+	        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+	    }
+	    
+	    // Chamar o serviço para cadastrar o usuário no país
+	    return usuarioService.pegarRolesUsuario(idUsuario);
+	}
+
 	@Operation(description = "Cadastra um usuário em um país")
 	@ApiResponse(description = "Retorna um ResponseEntity de um país com uma lista de usuários dentro")
 	@PostMapping(value = "/codigoPais/{codigo}")
