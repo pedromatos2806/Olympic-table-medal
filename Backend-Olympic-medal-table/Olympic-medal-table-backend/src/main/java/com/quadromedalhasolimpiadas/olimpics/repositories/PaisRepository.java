@@ -8,12 +8,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.quadromedalhasolimpiadas.olimpics.model.entities.Pais;
+
 @Repository
 public interface PaisRepository extends JpaRepository<Pais, Long> {
-	
+
 	@Query("""
 			SELECT p
-			FROM Pais p 
+			FROM Pais p
 			JOIN FETCH Medalha m
 			ON m.pais.id = p.id
 			WHERE p.totalMedalhas > 0
@@ -23,10 +24,20 @@ public interface PaisRepository extends JpaRepository<Pais, Long> {
 					, p.medalhasBronze DESC
 			""")
 	public List<Pais> findAllComMedalha();
+
 	
+	@Query("""
+			SELECT p
+			FROM Pais p
+			JOIN FETCH Medalha m
+			ON m.pais.id = p.id
+			ORDER BY p.totalMedalhas DESC
+					, p.medalhasOuro DESC
+					, p.medalhasPrata DESC
+					, p.medalhasBronze DESC
+			""")
 	public List<Pais> findByNome(String nome);
 
 	public Optional<Pais> findByCodigo(String codigo);
-	
-	
+
 }
