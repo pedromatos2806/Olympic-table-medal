@@ -1,4 +1,4 @@
-package com.quadromedalhasolimpiadas.olimpics.model.entities;
+package com.quadromedalhasolimpiadas.olimpics.domain.model.entities;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -8,7 +8,7 @@ import java.util.Set;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.quadromedalhasolimpiadas.olimpics.model.dto.UsuarioDto;
+import com.quadromedalhasolimpiadas.olimpics.domain.model.dto.UsuarioDto;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

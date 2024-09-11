@@ -1,10 +1,10 @@
-package com.quadromedalhasolimpiadas.olimpics.model.dto;
+package com.quadromedalhasolimpiadas.olimpics.domain.model.dto;
 
-import com.quadromedalhasolimpiadas.olimpics.model.entities.Esporte;
+import com.quadromedalhasolimpiadas.olimpics.domain.model.entities.Esporte;
 
 import jakarta.validation.constraints.NotBlank;
 
-public record EsporteDto(Long id,@NotBlank(message = "nome do esporte é obrigatório") String nome, @NotBlank boolean ehEquipe) {
+public record EsporteDto(Long id, @NotBlank(message = "{esporte.nome}") String nome, @NotBlank(message = "{esporte.equipe}") boolean ehEquipe) {
 
 	
 	public EsporteDto(Esporte esporte) {

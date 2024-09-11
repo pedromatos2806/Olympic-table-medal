@@ -1,6 +1,6 @@
-package com.quadromedalhasolimpiadas.olimpics.model.dto;
+package com.quadromedalhasolimpiadas.olimpics.domain.model.dto;
 
-import com.quadromedalhasolimpiadas.olimpics.model.entities.Role;
+import com.quadromedalhasolimpiadas.olimpics.domain.model.entities.Role;
 
 public record RoleDto(Long id, String role) {
 	

@@ -1,9 +1,9 @@
-package com.quadromedalhasolimpiadas.olimpics.model.dto;
+package com.quadromedalhasolimpiadas.olimpics.domain.model.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
-public record DadosAutenticacao(  @NotBlank(message = "Email é obrigatório")
-								@Email(message = "Formato do email é inválido") String login
-								,@NotBlank(message = "senha é obrigatória") String senha) {
+public record DadosAutenticacao(
+								@Email(message = "{dadosAutenticacao.login}") String login
+								,@NotBlank(message = "{dadosAutenticacao.senha}") String senha) {
 }

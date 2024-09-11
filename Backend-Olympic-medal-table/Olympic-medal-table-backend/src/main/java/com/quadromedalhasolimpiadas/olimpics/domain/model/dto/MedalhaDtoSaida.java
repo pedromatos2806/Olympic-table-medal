@@ -1,4 +1,4 @@
-package com.quadromedalhasolimpiadas.olimpics.model.command;
+package com.quadromedalhasolimpiadas.olimpics.domain.model.dto;
 
 import java.util.List;
 
@@ -6,10 +6,10 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 
 
-public record MedalhaCommand(List<String> tipoMedalhaString) {
+public record MedalhaDtoSaida(List<String> tipoMedalhaString) {
 	
 	@JsonCreator
-    public MedalhaCommand(List<String> tipoMedalhaString) {
+    public MedalhaDtoSaida(List<String> tipoMedalhaString) {
         
         this.tipoMedalhaString = tipoMedalhaString.stream()
             .map(String::toUpperCase)

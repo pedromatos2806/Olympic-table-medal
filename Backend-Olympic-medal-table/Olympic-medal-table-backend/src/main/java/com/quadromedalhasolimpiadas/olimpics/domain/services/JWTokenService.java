@@ -1,4 +1,4 @@
-package com.quadromedalhasolimpiadas.olimpics.services;
+package com.quadromedalhasolimpiadas.olimpics.domain.services;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -11,7 +11,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
-import com.quadromedalhasolimpiadas.olimpics.model.entities.Usuario;
+import com.quadromedalhasolimpiadas.olimpics.domain.model.entities.Usuario;
 
 @Service
 public class JWTokenService {

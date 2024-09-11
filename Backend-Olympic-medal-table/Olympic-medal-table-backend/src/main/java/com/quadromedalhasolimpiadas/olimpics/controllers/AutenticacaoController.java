@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.quadromedalhasolimpiadas.olimpics.model.dto.DadosAutenticacao;
-import com.quadromedalhasolimpiadas.olimpics.model.dto.DadosTokenJWT;
-import com.quadromedalhasolimpiadas.olimpics.model.entities.Usuario;
-import com.quadromedalhasolimpiadas.olimpics.services.JWTokenService;
+import com.quadromedalhasolimpiadas.olimpics.domain.model.dto.DadosAutenticacao;
+import com.quadromedalhasolimpiadas.olimpics.domain.model.dto.DadosTokenJWT;
+import com.quadromedalhasolimpiadas.olimpics.domain.model.entities.Usuario;
+import com.quadromedalhasolimpiadas.olimpics.domain.services.JWTokenService;
 
 
 @RestController

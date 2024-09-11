@@ -1,10 +1,10 @@
-package com.quadromedalhasolimpiadas.olimpics.services;
+package com.quadromedalhasolimpiadas.olimpics.domain.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.quadromedalhasolimpiadas.olimpics.model.entities.Pais;
-import com.quadromedalhasolimpiadas.olimpics.model.enumeration.TipoMedalha;
+import com.quadromedalhasolimpiadas.olimpics.domain.model.entities.Pais;
+import com.quadromedalhasolimpiadas.olimpics.domain.model.enumeration.TipoMedalha;
 import com.quadromedalhasolimpiadas.olimpics.repositories.MedalhaRepository;
 import com.quadromedalhasolimpiadas.olimpics.repositories.PaisRepository;
 

@@ -1,7 +1,7 @@
-package com.quadromedalhasolimpiadas.olimpics.model.entities;
+package com.quadromedalhasolimpiadas.olimpics.domain.model.entities;
 
-import com.quadromedalhasolimpiadas.olimpics.model.dto.MedalhaDto;
-import com.quadromedalhasolimpiadas.olimpics.model.enumeration.TipoMedalha;
+import com.quadromedalhasolimpiadas.olimpics.domain.model.dto.MedalhaDto;
+import com.quadromedalhasolimpiadas.olimpics.domain.model.enumeration.TipoMedalha;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

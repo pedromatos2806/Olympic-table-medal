@@ -1,21 +1,21 @@
-package com.quadromedalhasolimpiadas.olimpics.model.command;
+package com.quadromedalhasolimpiadas.olimpics.domain.model.dto;
 
 import java.util.List;
 
-import com.quadromedalhasolimpiadas.olimpics.model.entities.Pais;
+import com.quadromedalhasolimpiadas.olimpics.domain.model.entities.Pais;
 
-public record PaisCommandSaidaComMedalhas (String nomePais,
+public record PaisDtoSaidaComMedalhas (String nomePais,
 										Long idPais, 
 										String codigoPais, 
 										int quantidadeMedalhasTotais, 
 										int quantidadeMedalhasOuro,
 										int quantidadeMedalhasPrata, 
 										int quantidadeMedalhasBronze, 
-										List<MedalhaCommandSaida> medalhas
+										List<MedalhaDtoSaidaCompleta> medalhas
 										){
 
 	
-	public PaisCommandSaidaComMedalhas(Pais pais) {
+	public PaisDtoSaidaComMedalhas(Pais pais) {
 		this(pais.getNome(),
 				pais.getId(),
 				pais.getCodigo(),
@@ -23,7 +23,7 @@ public record PaisCommandSaidaComMedalhas (String nomePais,
 				pais.getMedalhasOuro(),
 				pais.getMedalhasPrata(),
 				pais.getMedalhasBronze(),
-				pais.getMedalhas().stream().map(MedalhaCommandSaida::new).toList()
+				pais.getMedalhas().stream().map(MedalhaDtoSaidaCompleta::new).toList()
 				);
 	}
 }

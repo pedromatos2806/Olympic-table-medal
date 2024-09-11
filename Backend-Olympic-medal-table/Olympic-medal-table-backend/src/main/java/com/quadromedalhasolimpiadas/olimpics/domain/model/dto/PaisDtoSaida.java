@@ -1,9 +1,9 @@
-package com.quadromedalhasolimpiadas.olimpics.model.command;
+package com.quadromedalhasolimpiadas.olimpics.domain.model.dto;
 
-import com.quadromedalhasolimpiadas.olimpics.model.entities.Pais;
+import com.quadromedalhasolimpiadas.olimpics.domain.model.entities.Pais;
 
 
-public record PaisCommandSaida(String nomePais, 
+public record PaisDtoSaida(String nomePais, 
 		Long idPais, 
 		String codigoPais, 
 		int quantidadeMedalhasTotais, 
@@ -12,7 +12,7 @@ public record PaisCommandSaida(String nomePais,
 		int quantidadeMedalhasBronze) {
 
 	
-	public PaisCommandSaida(Pais pais) {
+	public PaisDtoSaida(Pais pais) {
 		this(pais.getNome(),
 			pais.getId(),
 			pais.getCodigo(),

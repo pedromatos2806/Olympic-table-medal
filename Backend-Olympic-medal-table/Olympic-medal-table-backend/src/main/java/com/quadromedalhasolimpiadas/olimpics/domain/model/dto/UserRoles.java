@@ -1,9 +1,9 @@
-package com.quadromedalhasolimpiadas.olimpics.model.command;
+package com.quadromedalhasolimpiadas.olimpics.domain.model.dto;
 
 import java.util.List;
 
-import com.quadromedalhasolimpiadas.olimpics.model.entities.Role;
-import com.quadromedalhasolimpiadas.olimpics.model.entities.Usuario;
+import com.quadromedalhasolimpiadas.olimpics.domain.model.entities.Role;
+import com.quadromedalhasolimpiadas.olimpics.domain.model.entities.Usuario;
 
 public record UserRoles(String nome, List<Role> roles) {
 

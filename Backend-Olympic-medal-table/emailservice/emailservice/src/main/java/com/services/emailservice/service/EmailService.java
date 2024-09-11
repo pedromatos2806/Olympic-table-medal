@@ -42,11 +42,18 @@ public class EmailService {
 		message.setSubject(dto.mailSubject());
 		message.setText(dto.mailText());
 		data.setStatus(EmailStatus.SENT);
-		emailSender.send(message);
-		emailRepository.save(data);
-		System.out.println("******************************************************************************");
-		System.out.println(data);
-		System.out.println("******************************************************************************");
+		
+		try {	
+			emailSender.send(message);
+			emailRepository.save(data);
+			System.out.println("******************************************************************************");
+			System.out.println(data);
+			System.out.println("******************************************************************************");
+		}catch (Exception e) {
+			System.out.println("******************************************************************************");
+			System.out.println("NÃO ENVIOU E-MAIL!!!!!!");
+			System.out.println("******************************************************************************");
+		}
 		return data;
 	}
 	

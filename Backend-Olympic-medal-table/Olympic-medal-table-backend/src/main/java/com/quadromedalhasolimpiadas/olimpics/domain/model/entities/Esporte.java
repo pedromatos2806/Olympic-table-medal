@@ -1,9 +1,9 @@
-package com.quadromedalhasolimpiadas.olimpics.model.entities;
+package com.quadromedalhasolimpiadas.olimpics.domain.model.entities;
 
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.quadromedalhasolimpiadas.olimpics.model.dto.EsporteDto;
+import com.quadromedalhasolimpiadas.olimpics.domain.model.dto.EsporteDto;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

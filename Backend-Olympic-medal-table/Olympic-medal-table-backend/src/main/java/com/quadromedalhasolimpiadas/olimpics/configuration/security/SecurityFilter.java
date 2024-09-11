@@ -8,8 +8,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import com.quadromedalhasolimpiadas.olimpics.domain.services.JWTokenService;
 import com.quadromedalhasolimpiadas.olimpics.repositories.UsuarioRepository;
-import com.quadromedalhasolimpiadas.olimpics.services.JWTokenService;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

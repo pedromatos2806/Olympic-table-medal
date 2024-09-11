@@ -5,10 +5,10 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.quadromedalhasolimpiadas.olimpics.model.entities.Esporte;
-import com.quadromedalhasolimpiadas.olimpics.model.entities.Medalha;
-import com.quadromedalhasolimpiadas.olimpics.model.entities.Pais;
-import com.quadromedalhasolimpiadas.olimpics.model.enumeration.TipoMedalha;
+import com.quadromedalhasolimpiadas.olimpics.domain.model.entities.Esporte;
+import com.quadromedalhasolimpiadas.olimpics.domain.model.entities.Medalha;
+import com.quadromedalhasolimpiadas.olimpics.domain.model.entities.Pais;
+import com.quadromedalhasolimpiadas.olimpics.domain.model.enumeration.TipoMedalha;
 @Repository
 public interface MedalhaRepository extends JpaRepository<Medalha, Long>{
 	

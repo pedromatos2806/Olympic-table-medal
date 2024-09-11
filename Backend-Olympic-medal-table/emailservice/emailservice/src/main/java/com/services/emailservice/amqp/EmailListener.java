@@ -15,17 +15,17 @@ public class EmailListener {
 	@Autowired
 	EmailService emailService;
 
-	@RabbitListener(queues = "email.notificacao")
+	@RabbitListener(queues = "${spring.rabbitmq.queue}")
 	public void receberEmail(@Payload MedalhaCommandSaida emailCommand) {
 
 		for (String email : emailCommand.emailsCadastradosNoPais()) {
 
-			EmailDto emaildto = new EmailDto("20222160007@ifba.edu.br", email,
+			EmailDto emaildto = new EmailDto("puppy.rocha.ssa@gmail.com", email,
 					"Olympics Table Medal - O país " + emailCommand.nomePais() + " recebeu uma nova medalha!",
 					"O país  " + emailCommand.nomePais() + " ganhou mais uma medalha de "
 							+ emailCommand.tipoMedalha() + " no esporte " + emailCommand.nomeEsporte() + ".");
 
-//			System.out.println(emaildto.toString());
+			System.out.println(emaildto.toString());
 
 			emailService.sendEmail(emaildto);
 		}

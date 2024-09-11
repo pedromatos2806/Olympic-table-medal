@@ -8,8 +8,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.quadromedalhasolimpiadas.olimpics.model.entities.Usuario;
-import com.quadromedalhasolimpiadas.olimpics.services.JWTokenService;
+import com.quadromedalhasolimpiadas.olimpics.domain.model.entities.Usuario;
+import com.quadromedalhasolimpiadas.olimpics.domain.services.JWTokenService;
 
 class JWTServiceTest {
 

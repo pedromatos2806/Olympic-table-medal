@@ -1,4 +1,4 @@
-package com.quadromedalhasolimpiadas.olimpics.services;
+package com.quadromedalhasolimpiadas.olimpics.domain.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

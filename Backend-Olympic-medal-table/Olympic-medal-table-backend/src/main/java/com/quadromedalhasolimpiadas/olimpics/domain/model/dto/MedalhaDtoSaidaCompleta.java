@@ -1,13 +1,13 @@
-package com.quadromedalhasolimpiadas.olimpics.model.command;
+package com.quadromedalhasolimpiadas.olimpics.domain.model.dto;
 
 import java.util.List;
 
-import com.quadromedalhasolimpiadas.olimpics.model.entities.Medalha;
-import com.quadromedalhasolimpiadas.olimpics.model.entities.Usuario;
-import com.quadromedalhasolimpiadas.olimpics.model.enumeration.TipoMedalha;
+import com.quadromedalhasolimpiadas.olimpics.domain.model.entities.Medalha;
+import com.quadromedalhasolimpiadas.olimpics.domain.model.entities.Usuario;
+import com.quadromedalhasolimpiadas.olimpics.domain.model.enumeration.TipoMedalha;
 
 
-public record MedalhaCommandSaida ( Long idMedalha,
+public record MedalhaDtoSaidaCompleta ( Long idMedalha,
 							TipoMedalha tipoMedalha, 
 							Long idEsporte, 
 							String nomeEsporte, 
@@ -18,7 +18,7 @@ public record MedalhaCommandSaida ( Long idMedalha,
 							List<String> emailsCadastradosNoPais){
 
 	
-	public MedalhaCommandSaida(Medalha medalha) {
+	public MedalhaDtoSaidaCompleta(Medalha medalha) {
 		
 		this(medalha.getId(),
 			medalha.getTipoMedalha(),

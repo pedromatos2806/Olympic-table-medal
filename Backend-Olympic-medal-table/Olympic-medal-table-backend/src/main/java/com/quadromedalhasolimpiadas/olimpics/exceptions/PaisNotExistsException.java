@@ -12,6 +12,6 @@ public class PaisNotExistsException extends RuntimeException {
 	}
 
 	public PaisNotExistsException(String message) {
-		super(message);
+		super("Não existe pais com esse código/nome: " + message);
 	}
 }

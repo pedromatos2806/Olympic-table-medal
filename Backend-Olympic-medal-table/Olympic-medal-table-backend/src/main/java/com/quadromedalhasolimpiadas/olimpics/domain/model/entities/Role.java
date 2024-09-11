@@ -1,8 +1,8 @@
-package com.quadromedalhasolimpiadas.olimpics.model.entities;
+package com.quadromedalhasolimpiadas.olimpics.domain.model.entities;
 
 import org.springframework.security.core.GrantedAuthority;
 
-import com.quadromedalhasolimpiadas.olimpics.model.dto.RoleDto;
+import com.quadromedalhasolimpiadas.olimpics.domain.model.dto.RoleDto;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

@@ -1,4 +1,4 @@
-package com.quadromedalhasolimpiadas.olimpics.model.enumeration;
+package com.quadromedalhasolimpiadas.olimpics.domain.model.enumeration;
 
 public enum TipoMedalha {
 	OURO, 

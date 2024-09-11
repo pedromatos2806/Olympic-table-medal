@@ -1,4 +1,4 @@
-package com.quadromedalhasolimpiadas.olimpics.model.entities;
+package com.quadromedalhasolimpiadas.olimpics.domain.model.entities;
 
 import java.util.List;
 import java.util.Set;
