@@ -1,6 +1,5 @@
 package com.quadromedalhasolimpiadas.olimpics.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -33,27 +32,26 @@ import jakarta.validation.Valid;
 @RequestMapping(value = "/usuario")
 public class UsuarioController {
 
-	@Autowired
-	UsuarioService usuarioService;
+	
+	private static UsuarioService usuarioService;
 
-	@Autowired
-	JWTokenService tokenService;
+	private static JWTokenService tokenService;
 
-	private static final String errosSalvarUsuarioBadRequest = """
+	private static final String ERROS_SALVAR_USUARIO_BAD_REQUEST = """
 			Não foi possível encontrar nenhuma ROLE nesse usuário!<br>
 			""";
 	
-	private static final String errosSalvarUsuarioUnprossableEntity = """
+	private static final String ERROS_SALVAR_USUARIO_UNPROSSABLE_ENTITY = """
 			Já existe um usuário cadastrado no nosso sistema com esse email! Por favor, tente novamente com outro email!<br>
 			""";
 
-	private static final String errosPegarRolesDoUsuário = """
+	private static final String ERROS_PEGAR_ROLES_DO_USUARIO = """
 			Usuário não encontrado no nosso sistema! <br>
 			""";
 
-	private static final String errosCadastrarUsuarioEmUmPais = """
-				Usuário não encontrado no nosso sistema! <br>
-				Não existe pais com esse código ou com esse nome!<br>
+	private static final String ERROS_CADASTRAR_USUARIO_EM_UM_PAIS = """
+			Usuário não encontrado no nosso sistema! <br>
+			Não existe pais com esse código ou com esse nome!<br>
 			""";
 	
 	
@@ -67,8 +65,8 @@ public class UsuarioController {
 	@Operation(summary = "Faz o cadastro de usuário na aplicação", responses = {
 			@ApiResponse(responseCode = "201", description = "retorna um ResponseEntity de usuarioDto com a senha encryptada", content = {
 					@Content(mediaType = MediaType.APPLICATION_JSON_VALUE) }),
-			@ApiResponse(responseCode = "400", description = errosSalvarUsuarioBadRequest),
-			@ApiResponse(responseCode = "422", description = errosSalvarUsuarioUnprossableEntity) })
+			@ApiResponse(responseCode = "400", description = ERROS_SALVAR_USUARIO_BAD_REQUEST),
+			@ApiResponse(responseCode = "422", description = ERROS_SALVAR_USUARIO_UNPROSSABLE_ENTITY) })
 	@PostMapping
 	public ResponseEntity<UsuarioDtoSalvo> salvar(@RequestBody @Valid UsuarioDto usuarioDto) {
 		return new ResponseEntity<>(usuarioService.salvar(usuarioDto), HttpStatus.CREATED);
@@ -76,7 +74,7 @@ public class UsuarioController {
 
 	@Operation(summary = "Busca as roles do usuario", responses = {
 			@ApiResponse(responseCode = "200", description = "Retorna um ResponseEntity de UsuarioCommand com uma Lista de Roles do usuario"),
-			@ApiResponse(responseCode = "400", description = errosPegarRolesDoUsuário) })
+			@ApiResponse(responseCode = "400", description = ERROS_PEGAR_ROLES_DO_USUARIO) })
 	@PostMapping(value = "/roles")
 	public ResponseEntity<UserRoles> pegarRolesDoUsuario(@RequestHeader("Authorization") String authorizationHeader) {
 		String token = null;
@@ -101,7 +99,7 @@ public class UsuarioController {
 	@Operation(summary = "Cadastra um usuário em um país", responses = {
 			@ApiResponse(responseCode = "201", description = "Retorna um ResponseEntity de um país com uma lista de usuários dentro" , content = {
 					@Content(mediaType = MediaType.APPLICATION_JSON_VALUE) }),
-			@ApiResponse(responseCode = "400", description = errosCadastrarUsuarioEmUmPais) })
+			@ApiResponse(responseCode = "400", description = ERROS_CADASTRAR_USUARIO_EM_UM_PAIS) })
 	@PostMapping(value = "/codigoPais/{codigo}")
 	public ResponseEntity<UsuarioDtoSaida> cadastrarUsuarioEmUmPais(@RequestHeader("Authorization") String authorizationHeader, @PathVariable String codigo) {
 
@@ -139,7 +137,8 @@ public class UsuarioController {
 	@Secured("ROLE_ADMIN")
 	public ResponseEntity<UsuarioDto> deletar(@PathVariable Long id) {
 
-		return usuarioService.deletar(id) ? (ResponseEntity<UsuarioDto>) ResponseEntity.ok()
+		return Boolean.TRUE.equals(usuarioService.deletar(id)) ? 
+				(ResponseEntity<UsuarioDto>) ResponseEntity.ok() 
 				: ResponseEntity.unprocessableEntity().build();
 	}
 
