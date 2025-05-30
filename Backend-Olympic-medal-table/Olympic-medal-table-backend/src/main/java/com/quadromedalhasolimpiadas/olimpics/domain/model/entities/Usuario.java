@@ -1,5 +1,6 @@
 package com.quadromedalhasolimpiadas.olimpics.domain.model.entities;
 
+import java.io.Serial;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -35,7 +36,8 @@ import lombok.ToString;
 @Entity(name = "usuarios")
 public class Usuario implements UserDetails {
 
-	private static final long serialVersionUID = -8916320181306985134L;
+    @Serial
+    private static final long serialVersionUID = -8916320181306985134L;
 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id

@@ -1,11 +1,14 @@
 package com.quadromedalhasolimpiadas.olimpics.exceptions;
 
+import java.io.Serial;
+
 public class EsporteNotExistsException extends RuntimeException {
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 6850157073726856494L;
+
+    /**
+     * 
+     */
+    @Serial
+    private static final long serialVersionUID = 6850157073726856494L;
 
 
 	public EsporteNotExistsException(String esporte) {

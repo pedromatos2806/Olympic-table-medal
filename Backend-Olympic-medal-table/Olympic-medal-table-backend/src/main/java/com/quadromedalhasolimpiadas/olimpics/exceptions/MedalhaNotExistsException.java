@@ -1,11 +1,14 @@
 package com.quadromedalhasolimpiadas.olimpics.exceptions;
 
+import java.io.Serial;
+
 public class MedalhaNotExistsException extends RuntimeException {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 5325008164500016547L;
+    /**
+     * 
+     */
+    @Serial
+    private static final long serialVersionUID = 5325008164500016547L;
 
 	public MedalhaNotExistsException() {
 		super("A medalha está nula! ");

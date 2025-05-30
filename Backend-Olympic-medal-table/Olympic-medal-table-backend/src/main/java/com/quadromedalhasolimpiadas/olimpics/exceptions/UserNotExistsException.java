@@ -1,11 +1,14 @@
 package com.quadromedalhasolimpiadas.olimpics.exceptions;
 
+import java.io.Serial;
+
 public class UserNotExistsException extends RuntimeException {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -4597908953042055463L;
+    /**
+     * 
+     */
+    @Serial
+    private static final long serialVersionUID = -4597908953042055463L;
 
 	public UserNotExistsException() {
 		super("Usuário não encontrado no nosso sistema! ");

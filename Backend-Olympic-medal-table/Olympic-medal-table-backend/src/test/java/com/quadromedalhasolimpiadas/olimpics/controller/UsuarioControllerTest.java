@@ -33,18 +33,22 @@ import com.quadromedalhasolimpiadas.olimpics.repositories.UsuarioRepository;
 @AutoConfigureJsonTesters
 public class UsuarioControllerTest {
 
+	@SuppressWarnings("removal")
 	@MockBean
 	private SecurityFilter securityFilter;
 	
 	@Autowired
 	private MockMvc mockMvc;
-
+	
+	@SuppressWarnings("removal")
 	@MockBean
 	private UsuarioService usuarioService;
-
+	
+	@SuppressWarnings("removal")
 	@MockBean
 	private UsuarioRepository usuarioRepository;
-
+	
+	@SuppressWarnings("removal")
 	@MockBean
 	private JWTokenService tokenService;
 
